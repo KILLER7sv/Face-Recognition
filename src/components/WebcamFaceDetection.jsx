@@ -54,7 +54,7 @@ const Login = (webcamRef) => {
 
 const WebcamFaceDetection = () => {
   const webcamRef = useRef(null);
-  const [isFaceDetected, setIsFaceDetected] = useState(false);
+  // const [isFaceDetected, setIsFaceDetected] = useState(false);
 
   useEffect(() => {
     const loadModelsAndStartDetection = async () => {
