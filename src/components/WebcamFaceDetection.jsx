@@ -63,20 +63,23 @@ const WebcamFaceDetection = () => {
     };
 
     const startDetection = async () => {
+      console.log("start-detection")
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
       while (true) {
         console.log("detecting")
         if (webcamRef.current) {
+          console.log("isCurrentDetection")
           const video = webcamRef.current.video;
-          const result = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions());
-
-          if (result) {
-            setIsFaceDetected(true);
-          } else {
-            setIsFaceDetected(false);
-          }
+          faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).then(e => {
+            console.log(e)
+            if (e) {
+              setIsFaceDetected(true);
+            } else {
+              setIsFaceDetected(false);
+            }
+          })
         } 
         await sleep(300);
       }
