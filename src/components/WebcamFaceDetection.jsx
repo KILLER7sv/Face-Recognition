@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
-// import * as faceapi from 'face-api.js';
+import * as faceapi from 'face-api.js';
 import './App.css';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = (webcamRef) => {
   const imageSrc = webcamRef.current.getScreenshot();
@@ -54,40 +54,40 @@ const Login = (webcamRef) => {
 
 const WebcamFaceDetection = () => {
   const webcamRef = useRef(null);
-  // const [isFaceDetected, setIsFaceDetected] = useState(false);
+  const [isFaceDetected, setIsFaceDetected] = useState(false);
 
-  // useEffect(() => {
-  //   const loadModelsAndStartDetection = async () => {
-  //     await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-  //     startDetection();
-  //   };
+  useEffect(() => {
+    const loadModelsAndStartDetection = async () => {
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+      startDetection();
+    };
 
-  //   const startDetection = async () => {
-  //     function sleep(ms) {
-  //       return new Promise(resolve => setTimeout(resolve, ms));
-  //     }
-  //     while (true) {
-  //       console.log("detecting")
-  //       if (webcamRef.current) {
-  //         const video = webcamRef.current.video;
-  //         const result = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions());
+    const startDetection = async () => {
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      while (true) {
+        console.log("detecting")
+        if (webcamRef.current) {
+          const video = webcamRef.current.video;
+          const result = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions());
 
-  //         if (result) {
-  //           setIsFaceDetected(true);
-  //         } else {
-  //           setIsFaceDetected(false);
-  //         }
-  //       } 
-  //       await sleep(300);
-  //     }
-  //   };
+          if (result) {
+            setIsFaceDetected(true);
+          } else {
+            setIsFaceDetected(false);
+          }
+        } 
+        await sleep(300);
+      }
+    };
 
-  //   loadModelsAndStartDetection();
+    loadModelsAndStartDetection();
 
-  //   return () => {
-  //     // Clean up
-  //   };
-  // }, []);
+    return () => {
+      // Clean up
+    };
+  }, []);
 
   return (
     <div className="container">
@@ -100,7 +100,7 @@ const WebcamFaceDetection = () => {
           screenshotFormat="image/jpeg"
           width={480}
         />
-        {/* {isFaceDetected && <div className="face-detected">Face Detected</div>}/ */}
+        {isFaceDetected && <div className="face-detected">Face Detected</div>}
       </div>
       <div className="buttons">
         <button className="action-button" onClick={() => Register(webcamRef)}>Register</button>
