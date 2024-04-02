@@ -1,0 +1,53 @@
+/* styles.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.webcam-container {
+  position: relative;
+}
+
+.webcam-video {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 8px;
+}
+
+.face-detected {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 255, 0, 0.5);
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+
+.action-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+#register-btn :disabled{
+  background-color: #000000;
+}
