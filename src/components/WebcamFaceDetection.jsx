@@ -4,7 +4,7 @@ import Webcam from 'react-webcam';
 import './App.css';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Register = (webcamRef) => {
   const imageSrc = webcamRef.current.getScreenshot();
